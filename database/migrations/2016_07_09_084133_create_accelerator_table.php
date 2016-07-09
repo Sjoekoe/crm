@@ -1,10 +1,10 @@
 <?php
 
-use App\Users\User;
+use App\Accelerator\Accelerator;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateAcceleratorTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create(User::TABLE, function (Blueprint $table) {
+        Schema::create(Accelerator::TABLE, function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->rememberToken();
-            $table->date('birthday');
             $table->timestamps();
         });
     }
@@ -31,6 +26,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop(User::TABLE);
+        Schema::drop(Accelerator::TABLE);
     }
 }

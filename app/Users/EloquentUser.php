@@ -10,6 +10,11 @@ class EloquentUser extends Authenticatable implements User
     use StandardModel;
 
     /**
+     * @var string
+     */
+    protected $table = self::TABLE;
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array

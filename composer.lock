@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ae6fd72c08f21917985bf8eae4c29d73",
-    "content-hash": "813f74894bbdb96e0411221e570fba1b",
+    "hash": "2b6538400c095e5cd0610eca28dce803",
+    "content-hash": "a3494df5d046fc3822b0c9728e48b532",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -434,6 +434,52 @@
                 "laravel"
             ],
             "time": "2016-06-17 19:25:12"
+        },
+        {
+            "name": "laravel/homestead",
+            "version": "v3.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/homestead.git",
+                "reference": "705449c3dbedbded4bd4f3ed725303c69253cad4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/homestead/zipball/705449c3dbedbded4bd4f3ed725303c69253cad4",
+                "reference": "705449c3dbedbded4bd4f3ed725303c69253cad4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9",
+                "symfony/console": "~2.3|~3.0",
+                "symfony/process": "~2.3|~3.0"
+            },
+            "bin": [
+                "homestead"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Homestead\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "description": "A virtual machine for web artisans.",
+            "time": "2016-02-16 22:31:00"
         },
         {
             "name": "league/flysystem",

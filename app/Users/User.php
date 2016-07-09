@@ -3,6 +3,8 @@ namespace App\Users;
 
 interface User
 {
+    const TABLE = 'users';
+    
     /**
      * @return int
      */
