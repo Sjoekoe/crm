@@ -21,7 +21,6 @@ class CreateEstimatesTable extends Migration
             $table->integer('status');
             $table->timestamp('expiry_date');
             $table->string('detail');
-            $table->string('amount');
             $table->string('invoiced');
             $table->string('number');
             $table->timestamps();

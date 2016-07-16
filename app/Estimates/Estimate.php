@@ -4,7 +4,13 @@ namespace App\Estimates;
 interface Estimate
 {
     const TABLE = 'estimates';
-    
+
+    const DRAFT = 0;
+    const SENT = 1;
+    const APPROVED = 2;
+    const DECLINED = 3;
+    const MODIFIED = 4;
+
     /**
      * @return int
      */
@@ -46,6 +52,11 @@ interface Estimate
     public function number();
 
     /**
+     * @return \App\Estimates\Groups\EstimateGroup[]
+     */
+    public function groups();
+
+    /**
      * @return \Carbon\Carbon
      */
     public function createdAt();
@@ -54,4 +65,9 @@ interface Estimate
      * @return \Carbon\Carbon
      */
     public function updatedAt();
+
+    /**
+     * @return string
+     */
+    public function toStatus();
 }

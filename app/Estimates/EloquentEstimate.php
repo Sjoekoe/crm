@@ -2,6 +2,7 @@
 namespace App\Estimates;
 
 use App\Clients\EloquentClient;
+use App\Estimates\Groups\EloquentEstimateGroup;
 use App\Models\StandardModel;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -47,14 +48,6 @@ class EloquentEstimate extends Model implements Estimate
     /**
      * @return string
      */
-    public function amount()
-    {
-        return $this->amount;
-    }
-
-    /**
-     * @return string
-     */
     public function invoiced()
     {
         return $this->invoiced;
@@ -66,5 +59,58 @@ class EloquentEstimate extends Model implements Estimate
     public function number()
     {
         return $this->number;
+    }
+
+    /**
+     * @return \App\Estimates\Groups\EstimateGroup[]
+     */
+    public function groups()
+    {
+        return $this->hasMany(EloquentEstimateGroup::class, 'estimate_id', 'id')->get();
+    }
+
+    /**
+     * @return string
+     */
+    public function toStatus()
+    {
+        switch ($this->status()) {
+            case self::DRAFT:
+                return 'draft';
+
+            case self::SENT:
+                return 'sent';
+
+            case self::APPROVED:
+                return 'approved';
+
+            case self::DECLINED:
+                return 'declined';
+
+            case self::MODIFIED:
+                return 'modified';
+        }
+    }
+
+    /**
+     * @return int
+     */
+    public function amount()
+    {
+        $result = 0;
+
+        foreach ($this->groups() as $group) {
+            $result += $group->amount();
+        }
+
+        return $result;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasOpenDebt()
+    {
+        return round($this->amount() * 100) != round($this->invoiced() * 100);
     }
 }
