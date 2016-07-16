@@ -4,6 +4,7 @@ namespace App\Clients;
 use App\Companies\EloquentCompany;
 use App\Models\StandardModel;
 use App\Users\EloquentUser;
+use Checklists\EloquentChecklist;
 use Illuminate\Database\Eloquent\Model;
 
 class EloquentClient extends Model implements Client
@@ -61,5 +62,13 @@ class EloquentClient extends Model implements Client
     public function company()
     {
         return $this->belongsTo(EloquentCompany::class, 'company_id', 'id')->first();
+    }
+
+    /**
+     * @return \App\Checklists\Checklist[]
+     */
+    public function checklists()
+    {
+        return $this->hasMany(EloquentChecklist::class, 'client_id', 'id')->get();
     }
 }

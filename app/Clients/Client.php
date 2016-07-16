@@ -41,6 +41,11 @@ interface Client
     public function company();
 
     /**
+     * @return \App\Checklists\Checklist[]
+     */
+    public function checklists();
+
+    /**
      * @return \Carbon\Carbon
      */
     public function createdAt();
