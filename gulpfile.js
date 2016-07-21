@@ -13,4 +13,6 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
     mix.sass('app.scss');
+    mix.sass('style-responsive.scss');
+    mix.sass('bootstrap-reset.scss');
 });
