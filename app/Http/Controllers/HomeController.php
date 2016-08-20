@@ -1,29 +1,26 @@
 <?php
-
 namespace App\Http\Controllers;
 
+use App\Clients\ClientRepository;
 use App\Http\Requests;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * @var \App\Clients\ClientRepository
      */
-    public function __construct()
+    private $clients;
+
+    public function __construct(ClientRepository $clients)
     {
         $this->middleware('auth');
+        $this->clients = $clients;
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view('home');
+        $clients = $this->clients->findAllPaginated();
+
+        return view('home', compact('clients'));
     }
 }

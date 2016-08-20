@@ -12,7 +12,16 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss');
-    mix.sass('style-responsive.scss');
-    mix.sass('bootstrap-reset.scss');
+    mix.sass('style.scss');
+    mix.styles([
+        'animate.css',
+        'bootstrap.css',
+        'plugins/*'
+    ], 'public/css');
+    mix.scripts('bootstrap.js', 'public/js/bootstrap.js');
+    mix.scripts('jquery-2.1.1.js', 'public/js/jquery.js');
+    mix.scripts('inspinia.js', 'public/js/inspinia.js');
+    mix.scripts('jquery-ui-1.10.4.min.js', 'public/js/jquery-ui.js');
+    mix.scripts('jquery-ui.custom.min.js', 'public/js/custom-jquery-ui.js');
+    mix.scriptsIn('resources/assets/js/plugins');
 });
